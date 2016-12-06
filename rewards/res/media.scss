@@ -1,0 +1,20 @@
+@media screen and (max-width: 520px) {
+	.block ul {
+		padding: 0 20px;
+	}
+	li.rewards-block {
+		width: 100%;
+		height: auto;
+		margin: 0;
+		margin-bottom: 10px;
+		img.attachment-rewards-thumb {
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+@media screen and (max-width: 330px) {
+	ul.submenu > li > a {
+		padding: 0 15px;
+	}
+}
