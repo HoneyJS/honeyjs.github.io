@@ -1,7 +1,8 @@
-@media screen and (max-width: 520px) {
-  .block ul {
-    padding: 0 20px; }
+.container {
+  padding-left: 30px;
+  padding-right: 30px; }
 
+@media screen and (max-width: 520px) {
   li.rewards-block {
     width: 100%;
     height: auto;
