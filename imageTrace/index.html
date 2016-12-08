@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no">
+	<title>ImageTrace</title>
+</head>
+<body>
+
+<canvas id="canvas" style="width: 100%"></canvas>
+
+<script src="./js/app.js"></script>
+<script>
+	var img = new Image();
+	img.src = './imgs/5.jpg';
+	img.onload = function () {
+		setTimeout(function () {
+			app.convert(img);
+			var canvas = document.getElementById('canvas');
+			canvas.addEventListener('click', function () {
+				app.toggle();
+			});
+		}, 1000);
+	};
+</script>
+</body>
+</html>
