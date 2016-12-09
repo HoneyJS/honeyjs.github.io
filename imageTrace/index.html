@@ -14,13 +14,11 @@
 	var img = new Image();
 	img.src = './imgs/5.jpg';
 	img.onload = function () {
-		setTimeout(function () {
-			app.convert(img);
-			var canvas = document.getElementById('canvas');
-			canvas.addEventListener('click', function () {
-				app.toggle();
-			});
-		}, 1000);
+		app.convert(img);
+		var canvas = document.getElementById('canvas');
+		canvas.addEventListener('click', function () {
+			app.toggle();
+		});
 	};
 </script>
 </body>
