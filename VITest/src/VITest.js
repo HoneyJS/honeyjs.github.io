@@ -10,7 +10,7 @@
 
 	'use strict';
 
-
+	'http://baas.im20.com.cn/Api/vml_wx_app/stat_test?baas_JSONP=imCallback&baas_action=create&project_id=1&username=&desc=test&datetime=2016-12-12 12:00:00'
 
 	// Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
 	if (typeof define === 'function' && define.amd) {
