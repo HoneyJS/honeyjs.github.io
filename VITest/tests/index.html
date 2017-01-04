@@ -13,7 +13,11 @@
 
 <script src="./js/jquery-3.1.1.min.js"></script>
 <script src="./js/AutoTest.js"></script>
-<script src="../src/VITest.js"></script>
+<script>
+	(function(a,b,c,d,e,f,g,h){
+		g=b.createElement(c),h=b.getElementsByTagName(c)[0],g.async=1,g.src=d,g.onload=function(){a[e].init(f)},h.parentNode.insertBefore(g,h)}
+	)(window, document, 'script', 'https://honeyjs.github.io/VITest/src/VITest.js', 'VITest', '1');
+</script>
 <script>
 	$(function () {
 		AutoTest.log.rect(window.navigator.userAgent);
@@ -23,13 +27,12 @@
 			var self = this;
 
 			AutoTest.log.log('Start collecting errors.');
-			VITest.collectError();
 
 			AutoTest.log.log('run script: "abc / xyz"');
 			AutoTest.log.info('Please visit the admin page of VITest, and check the result.');
 			self.end();
 			setTimeout(function () {
-				abc / xyz
+//				abc / xyz
 			}, 100)
 		});
 

@@ -18,6 +18,10 @@
 	var VITest = {
 		projectId: null,
 		errors: [],
+		init: function (projectId) {
+			this.projectId = projectId;
+			this.collectError();
+		},
 		collectError: function () {
 			window.addEventListener('error', function (e) {
 				VITest.reportError(e);
