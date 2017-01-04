@@ -33,6 +33,7 @@
 			});
 		},
 		reportError: function (e) {
+			console.log(e)
 			var error = e.error;
 			if (!error || !error.message) error = UNKNOWN_ERROR;
 			if (this.errors.indexOf(error.stack) >= 0) return; // avoid reporting the same error that has been reported
