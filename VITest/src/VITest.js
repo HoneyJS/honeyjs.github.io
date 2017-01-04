@@ -1,5 +1,5 @@
 /*!
- *  VITest.js v0.1.0103
+ *  VITest.js v0.2.0104
  *
  *  yinghao.liu@vmlim20.com.cn
  *
@@ -37,7 +37,8 @@
 			if (!error || !error.message) error = UNKNOWN_ERROR;
 			if (this.errors.indexOf(error.stack) >= 0) return; // avoid reporting the same error that has been reported
 			reportError(error.message, error.stack, e.timeStamp, e.isTrusted);
-		}
+		},
+		getErrors: getErrors
 	};
 
 	var reportErrorUrl = 'http://baas.im20.com.cn/Api/vml_wx_app/stat_error';
@@ -54,6 +55,19 @@
 				is_trusted: isTrusted,
 				user_agent: navigator.userAgent
 			});
+	}
+
+	function getErrors(callback) {
+		window.imCallback = callback;
+		var script = document.createElement('script');
+		script.async = true;
+		script.src = reportErrorUrl + '?' + params({
+				baas_JSONP: 'imCallback',
+				baas_action: 'sort',
+				baas_sort_field: 'timestamp',
+				baas_sort_type: 'desc'
+			});
+		document.head.appendChild(script);
 	}
 
 	function params(data) {
