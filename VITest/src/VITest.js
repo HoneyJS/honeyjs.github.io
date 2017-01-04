@@ -21,6 +21,11 @@
 		init: function (projectId) {
 			this.projectId = projectId;
 			this.collectError();
+			if (window.VITestErrors && VITestErrors.length) {
+				VITestErrors.forEach(function (e) {
+					VITest.reportError(e);
+				});
+			}
 		},
 		collectError: function () {
 			window.addEventListener('error', function (e) {
