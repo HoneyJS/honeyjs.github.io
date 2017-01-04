@@ -28,9 +28,18 @@
 			this.collectError();
 		},
 		collectError: function () {
-			window.addEventListener('error', function (e) {
-				VITest.reportError(e);
-			});
+			// window.addEventListener('error', function (e) {
+			// 	VITest.reportError(e);
+			// });
+			window.onerror = function(messageOrEvent, source, lineno, colno, error) {
+				VITest.reportError({
+					error: {
+						message:messageOrEvent,
+						stack: source+':'+lineno+':'+colno,
+					},
+					isTrusted: true
+				});
+			};
 		},
 		reportError: function (e) {
 			console.log(e)
