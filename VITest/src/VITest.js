@@ -1,5 +1,5 @@
 /*!
- *  VITest.js v0.3.0104
+ *  VITest.js v0.4.0104
  *
  *  yinghao.liu@vmlim20.com.cn
  *
@@ -37,13 +37,13 @@
 			if (!error || !error.message) error = UNKNOWN_ERROR;
 			if (this.errors.indexOf(error.stack) >= 0) return; // avoid reporting the same error that has been reported
 			this.errors.push(error.stack);
-			reportError(error.message, error.stack, e.timeStamp, e.isTrusted);
+			reportError(error.message, error.stack, e.isTrusted);
 		}
 	};
 
 	var reportErrorUrl = '//baas.im20.com.cn/Api/vml_wx_app/stat_error';
 
-	function reportError(message, stack, timestamp, isTrusted) {
+	function reportError(message, stack, isTrusted) {
 		var img = new Image();
 		img.src = reportErrorUrl + '?' + params({
 				timestamp: parseInt(new Date().getTime() / 1000),
@@ -51,8 +51,8 @@
 				project_id: VITest.projectId,
 				message: message,
 				stack: stack,
-				time: parseInt(timestamp),
 				is_trusted: isTrusted,
+				location: window.location.href,
 				user_agent: navigator.userAgent
 			});
 	}
