@@ -4,21 +4,79 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<title>Admin Page of VITest</title>
-	<link rel="stylesheet" href="./css/font-awesome.css">
-	<link rel="stylesheet" href="./css/autoTestLog.css">
+	<style>
+		body {
+			padding: 10px 30px;
+		}
+		table {
+			border-bottom: 1px solid #000;
+			border-right: 1px solid #000;
+		}
+		th, td {
+			padding: 5px;
+			border-left: 1px solid #000;
+			border-top: 1px solid #000;
+			text-align: center;
+		}
+
+		th:nth-child(1) {
+			width: 10em;
+		}
+
+		th:nth-child(2) {
+			width: 2em;
+		}
+
+		th:nth-child(3) {
+			width: 10em;
+		}
+
+		th:nth-child(6) {
+			width: 4em;
+		}
+
+		.err {
+			color: #f33;
+			font-weight: bold;
+		}
+	</style>
 </head>
 <body>
 
-<div id="autoTestLog"></div>
+<table id="table" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<th>Time</th>
+		<th>ProjectID</th>
+		<th>Error</th>
+		<th>Detail</th>
+		<th>UA</th>
+		<th>Delay</th>
+	</tr>
+</table>
 
 <script src="./js/jquery-3.1.1.min.js"></script>
-<script src="./js/AutoTest.js"></script>
 <script src="../dist/VITest.js"></script>
 <script>
 	$(function () {
 		VITest.getErrors(function (json) {
 			console.log(json)
+			showList(json.data);
 		});
+
+		function showList(list) {
+			list.forEach(showError);
+		}
+
+		function showError(error) {
+			var $tr = $('<tr>');
+			$tr.append('<td>' + error.f_create_datetime + '</td>');
+			$tr.append('<td>' + error.project_id + '</td>');
+			$tr.append('<td class="err">' + error.message + '</td>');
+			$tr.append('<td>' + error.stack + '</td>');
+			$tr.append('<td>' + error.user_agent + 'ms</td>');
+			$tr.append('<td>' + error.time + 'ms</td>');
+			$tr.appendTo('#table');
+		}
 	});
 </script>
 </body>
