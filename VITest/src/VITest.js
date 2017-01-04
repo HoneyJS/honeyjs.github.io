@@ -60,7 +60,6 @@
 	function getErrors(callback) {
 		window.imCallback = callback;
 		var script = document.createElement('script');
-		script.async = true;
 		script.src = reportErrorUrl + '?' + params({
 				baas_JSONP: 'imCallback',
 				baas_action: 'sort',
