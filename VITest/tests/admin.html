@@ -31,7 +31,7 @@
 		}
 
 		th:nth-child(3) {
-			width: 10em;
+			width: 12em;
 		}
 
 		th:nth-child(6) {
@@ -41,6 +41,10 @@
 		.err {
 			color: #f33;
 			font-weight: bold;
+		}
+		div {
+			text-align: left;
+			padding: 5px 0;
 		}
 	</style>
 </head>
@@ -52,8 +56,8 @@
 		<th>ProjectID</th>
 		<th>Error</th>
 		<th>Detail</th>
-		<th>UA</th>
-		<th>Location</th>
+		<!--<th>UA</th>-->
+		<!--<th>Location</th>-->
 	</tr>
 </table>
 
@@ -86,9 +90,26 @@
 			$tr.append('<td>' + error.f_create_datetime + '</td>');
 			$tr.append('<td>' + error.project_id + '</td>');
 			$tr.append('<td class="err">' + error.message + '</td>');
-			$tr.append('<td>' + error.stack + '</td>');
-			$tr.append('<td>' + error.user_agent + '</td>');
-			$tr.append('<td>' + error.location + '</td>');
+//			$tr.append('<td>' + error.stack + '</td>');
+//			$tr.append('<td>' + error.user_agent + '</td>');
+//			$tr.append('<td>' + error.location + '</td>');
+			$tr.append('<td><div>Stack: ' + error.stack + '</div><div>UA: ' + error.user_agent + '</div><div>Link: ' + error.location + '</div></td>');
+//			$tr.append('<td>' +
+//					'<table>' +
+//					'<tr>' +
+//					'<td>Stack: </td>' +
+//					'<td>' + error.stack + '</td>' +
+//					'</tr>' +
+//					'<tr>' +
+//					'<td>UA: </td>' +
+//					'<td>' + error.user_agent + '</td>' +
+//					'</tr>' +
+//					'<tr>' +
+//					'<td>Link: ' + '</td>' +
+//					'<td>' + error.location + '</td>' +
+//					'</tr>' +
+//					'</table>' +
+//					'</td>');
 			$tr.appendTo('#table');
 		}
 	});
