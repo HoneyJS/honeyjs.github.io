@@ -41,7 +41,7 @@
 		getErrors: getErrors
 	};
 
-	var reportErrorUrl = 'http://baas.im20.com.cn/Api/vml_wx_app/stat_error';
+	var reportErrorUrl = '//baas.im20.com.cn/Api/vml_wx_app/stat_error';
 
 	function reportError(message, stack, timestamp, isTrusted) {
 		var img = new Image();
