@@ -53,7 +53,7 @@
 		<th>Error</th>
 		<th>Detail</th>
 		<th>UA</th>
-		<th>Delay</th>
+		<!--<th>Delay</th>-->
 	</tr>
 </table>
 
@@ -68,7 +68,8 @@
 			data: {
 				baas_action: 'sort',
 				baas_sort_field: 'timestamp',
-				baas_sort_type: 'desc'
+				baas_sort_type: 'desc',
+				baas_count: 50
 			},
 			success: function (json) {
 				console.log(json)
@@ -87,7 +88,7 @@
 			$tr.append('<td class="err">' + error.message + '</td>');
 			$tr.append('<td>' + error.stack + '</td>');
 			$tr.append('<td>' + error.user_agent + '</td>');
-			$tr.append('<td>' + (error.time < 1000 ? error.time + 'ms' : parseInt(error.time / 1000) + 's') + '</td>');
+//			$tr.append('<td>' + (error.time < 1000 ? error.time + 'ms' : parseInt(error.time / 1000) + 's') + '</td>');
 			$tr.appendTo('#table');
 		}
 	});
