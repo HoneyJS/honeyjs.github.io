@@ -28,18 +28,9 @@
 			this.collectError();
 		},
 		collectError: function () {
-			// window.addEventListener('error', function (e) {
-			// 	VITest.reportError(e);
-			// });
-			window.onerror = function(messageOrEvent, source, lineno, colno, error) {
-				VITest.reportError({
-					error: {
-						message:messageOrEvent,
-						stack: source+':'+lineno+':'+colno,
-					},
-					isTrusted: true
-				});
-			};
+			window.addEventListener('error', function (e) {
+				VITest.reportError(e);
+			});
 		},
 		reportError: function (e) {
 			console.log(e)
@@ -47,7 +38,7 @@
 			if (!error || !error.message) error = UNKNOWN_ERROR;
 			if (this.errors.indexOf(error.stack) >= 0) return; // avoid reporting the same error that has been reported
 			this.errors.push(error.stack);
-			reportError(error.message, error.stack, e.isTrusted);
+			// reportError(error.message, error.stack, e.isTrusted);
 		}
 	};
 

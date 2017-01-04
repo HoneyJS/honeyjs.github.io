@@ -10,10 +10,20 @@ $(function () {
 		AutoTest.log.log('run script: "xyz * abc"');
 		AutoTest.log.info('Please visit <a href="./admin.html">the admin page of VITest</a>, and check the result.');
 		self.end();
-		setTimeout(func, 100);
+		setTimeout(func, 1000);
 
 		function func() {
-			xyz * abc
+			$.ajax({
+				url: './js/endfile2.js',
+				type: 'get',
+				dataType: 'script',
+				success: function () {
+
+				},
+				fail: function () {
+					throw new Error('script error');
+				}
+			});
 		}
 	});
 
