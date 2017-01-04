@@ -8,15 +8,18 @@
 		body {
 			padding: 10px 30px;
 		}
+
 		table {
-			border-bottom: 1px solid #000;
-			border-right: 1px solid #000;
+			border-bottom: 1px solid #aaa;
+			border-right: 1px solid #aaa;
 		}
+
 		th, td {
 			padding: 5px;
-			border-left: 1px solid #000;
-			border-top: 1px solid #000;
+			border-left: 1px solid #aaa;
+			border-top: 1px solid #aaa;
 			text-align: center;
+			word-break: break-all;
 		}
 
 		th:nth-child(1) {
@@ -24,7 +27,7 @@
 		}
 
 		th:nth-child(2) {
-			width: 2em;
+			width: 5em;
 		}
 
 		th:nth-child(3) {
@@ -55,12 +58,22 @@
 </table>
 
 <script src="./js/jquery-3.1.1.min.js"></script>
-<script src="../dist/VITest.js"></script>
 <script>
 	$(function () {
-		VITest.getErrors(function (json) {
-			console.log(json)
-			showList(json.data);
+		$.ajax({
+			type: 'get',
+			dataType: 'jsonp',
+			jsonp: 'baas_JSONP',
+			url: '//baas.im20.com.cn/Api/vml_wx_app/stat_error',
+			data: {
+				baas_action: 'sort',
+				baas_sort_field: 'timestamp',
+				baas_sort_type: 'desc'
+			},
+			success: function (json) {
+				console.log(json)
+				showList(json.data);
+			}
 		});
 
 		function showList(list) {
@@ -73,8 +86,8 @@
 			$tr.append('<td>' + error.project_id + '</td>');
 			$tr.append('<td class="err">' + error.message + '</td>');
 			$tr.append('<td>' + error.stack + '</td>');
-			$tr.append('<td>' + error.user_agent + 'ms</td>');
-			$tr.append('<td>' + error.time + 'ms</td>');
+			$tr.append('<td>' + error.user_agent + '</td>');
+			$tr.append('<td>' + (error.time < 1000 ? error.time + 'ms' : parseInt(error.time / 1000) + 's') + '</td>');
 			$tr.appendTo('#table');
 		}
 	});
