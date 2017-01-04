@@ -1,0 +1,62 @@
+body {
+	background: #333;
+}
+
+#autoTestLog {
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: "Helvetica Neue", "Microsoft YaHei";
+	word-break: break-all;
+
+	.log {
+		display: block;
+		color: #ddd;
+		line-height: 1.5;
+		-webkit-animation: log_in 0.6s ease-in-out both;
+		border-radius: 3px;
+		padding: 5px 10px;
+		margin-bottom: 6px;
+		background: rgba(255, 255, 255, 0.2);
+		.fa {
+			margin-right: 5px;
+		}
+		a {
+			color: inherit;
+			text-decoration: underline;
+		}
+		&.info {
+			background: #353;
+			color: #fff;
+		}
+		&.succ {
+			font-size: 16px;
+			background: #3f3;
+			color: #333;
+		}
+		&.fail {
+			font-size: 16px;
+			background: #fb3100;
+			color: #fff;
+		}
+		&.warn {
+			font-size: 16px;
+			background: #f93;
+			color: #fff;
+		}
+		&.rect {
+			font-size: 12px;
+			background: #333;
+			color: #eee;
+			border: 1px dashed #eee;
+		}
+	}
+}
+
+@-webkit-keyframes log_in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

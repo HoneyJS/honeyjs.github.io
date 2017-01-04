@@ -6,39 +6,72 @@
  *  MIT License
  */
 
-(function() {
+(function () {
 
 	'use strict';
 
-	'http://baas.im20.com.cn/Api/vml_wx_app/stat_test?baas_JSONP=imCallback&baas_action=create&project_id=1&username=&desc=test&datetime=2016-12-12 12:00:00'
+	var UNKNOWN_ERROR = {
+		message: 'UNKNOWN_ERROR',
+		stack: ''
+	};
+
+	var VITest = {
+		projectId: null,
+		errors: [],
+		collectError: function () {
+			window.addEventListener('error', function (e) {
+				VITest.reportError(e);
+			});
+		},
+		reportError: function (e) {
+			var error = e.error;
+			if (!error || !error.message) error = UNKNOWN_ERROR;
+			if (this.errors.indexOf(error.stack) >= 0) return; // avoid reporting the same error that has been reported
+			reportError(error.message, error.stack, e.timeStamp, e.isTrusted);
+		}
+	};
+
+	var reportErrorUrl = 'http://baas.im20.com.cn/Api/vml_wx_app/stat_error';
+
+	function reportError(message, stack, timestamp, isTrusted) {
+		var img = new Image();
+		img.src = reportErrorUrl + '?' + params({
+				timestamp: parseInt(new Date().getTime() / 1000),
+				baas_action: 'create',
+				project_id: VITest.projectId,
+				message: message,
+				stack: stack,
+				time: parseInt(timestamp),
+				is_trusted: isTrusted,
+				user_agent: navigator.userAgent
+			});
+	}
+
+	function params(data) {
+		var arr = [];
+		for (var param in data) {
+			arr.push(param + '=' + encodeURIComponent(data[param]));
+		}
+		return arr.join('&');
+	}
 
 	// Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
 	if (typeof define === 'function' && define.amd) {
-		define([], function() {
-			return {
-				Howler: Howler,
-				Howl: Howl
-			};
+		define([], function () {
+			return VITest;
 		});
 	}
 
 	// Add support for CommonJS libraries such as browserify.
 	if (typeof exports !== 'undefined') {
-		exports.Howler = Howler;
-		exports.Howl = Howl;
+		exports.VITest = VITest;
 	}
 
 	// Define globally in case AMD is not available or unused.
 	if (typeof window !== 'undefined') {
-		window.HowlerGlobal = HowlerGlobal;
-		window.Howler = Howler;
-		window.Howl = Howl;
-		window.Sound = Sound;
+		window.VITest = VITest;
 	} else if (typeof global !== 'undefined') { // Add to global in Node.js (for testing, etc).
-		global.HowlerGlobal = HowlerGlobal;
-		global.Howler = Howler;
-		global.Howl = Howl;
-		global.Sound = Sound;
+		global.VITest = VITest;
 	}
 
 })();

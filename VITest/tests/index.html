@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+	<title>Tests of VITest</title>
+	<link rel="stylesheet" href="./css/font-awesome.css">
+	<link rel="stylesheet" href="./css/autoTestLog.css">
+</head>
+<body>
+
+<div id="autoTestLog"></div>
+
+<script src="./js/jquery-3.1.1.min.js"></script>
+<script src="./js/AutoTest.js"></script>
+<script src="../src/VITest.js"></script>
+<script>
+	$(function () {
+		AutoTest.log.rect(window.navigator.userAgent);
+		AutoTest.log.rect(window.location.href);
+
+		AutoTest.addTest('Collecting Errors', function () {
+			var self = this;
+
+			AutoTest.log.log('Start collecting errors.');
+			VITest.collectError();
+
+			AutoTest.log.log('run script: "abc / xyz"');
+			AutoTest.log.info('Please visit the admin page of VITest, and check the result.');
+			self.end();
+			setTimeout(function () {
+				abc / xyz
+			}, 100)
+		});
+
+		AutoTest.start();
+	});
+</script>
+</body>
+</html>
