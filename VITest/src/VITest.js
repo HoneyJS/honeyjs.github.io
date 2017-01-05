@@ -35,10 +35,12 @@
 		reportError: function (e) {
 			console.log(e)
 			var error = e.error;
-			if (!error || !error.message) error = UNKNOWN_ERROR;
+			if (!error && !e.message) error = UNKNOWN_ERROR;
+			var errMsg = (error && error.message) || e.message;
+			var errStack = (error && error.stack) || e.message;
 			if (this.errors.indexOf(error.stack) >= 0) return; // avoid reporting the same error that has been reported
-			this.errors.push(error.stack);
-			// reportError(error.message, error.stack, e.isTrusted);
+			this.errors.push(errStack);
+			reportError(errMsg, errStack, e.isTrusted);
 		}
 	};
 

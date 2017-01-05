@@ -14,7 +14,8 @@ $(function () {
 
 		function func() {
 			$.ajax({
-				url: './js/endfile2.js',
+				// url: 'http://www.baidu.com',
+				url: './js/endfile.js',
 				type: 'get',
 				dataType: 'script',
 				success: function () {
