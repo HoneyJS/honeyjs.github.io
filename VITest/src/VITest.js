@@ -1,5 +1,5 @@
 /*!
- *  VITest.js v0.4.0104
+ *  VITest.js v0.5.0105
  *
  *  yinghao.liu@vmlim20.com.cn
  *
