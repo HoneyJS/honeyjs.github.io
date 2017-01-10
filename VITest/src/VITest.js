@@ -38,6 +38,8 @@
 			if (this.errors.indexOf(errStack) >= 0) return; // avoid reporting the same error that has been reported
 			this.errors.push(errStack);
 			reportError(errMsg, errStack, e.isTrusted);
+		},
+		__callback: function () {
 		}
 	};
 
@@ -69,7 +71,8 @@
 				url = args[1];
 
 			// mock onreadystatechange
-			var _onreadystatechange = XMLReq.onreadystatechange || function () {};
+			var _onreadystatechange = XMLReq.onreadystatechange || function () {
+				};
 			XMLReq.onreadystatechange = function () {
 				if (XMLReq.readyState == 4) {
 					if ((XMLReq.status >= 200 && XMLReq.status < 300 ) || XMLReq.status == 304) {
@@ -112,6 +115,7 @@
 	}
 
 	var reportErrorUrl = '//baas.im20.com.cn/Api/vml_wx_app/stat_error';
+
 	/**
 	 * report error to server
 	 * @param message {string}
@@ -122,6 +126,7 @@
 	function reportError(message, stack, isTrusted) {
 		var script = document.createElement('script');
 		script.src = reportErrorUrl + '?' + params({
+				baas_JSONP: 'VITest.__callback',
 				timestamp: parseInt(new Date().getTime() / 1000),
 				baas_action: 'create',
 				project_id: VITest.projectId,

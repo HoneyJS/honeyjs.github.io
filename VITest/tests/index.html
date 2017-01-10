@@ -6,6 +6,10 @@
 	<title>Tests of VITest</title>
 	<link rel="stylesheet" href="./css/font-awesome.css">
 	<link rel="stylesheet" href="./css/autoTestLog.css">
+	<script>
+		(function(a,b,c,d,e,f,g,h){a.VITestErrors= [];a.addEventListener('error', function (e) {VITestErrors.push(e);});g=b.createElement(c),h=b.getElementsByTagName(c)[0],g.async=1,g.src=d,g.onload=function(){a[e].init(f)},h.parentNode.insertBefore(g,h)}
+		)(window, document, 'script', '../src/VITest.js', 'VITest', '0');
+	</script>
 </head>
 <body>
 
@@ -14,10 +18,5 @@
 <script src="./js/jquery-3.1.1.min.js"></script>
 <script src="./js/AutoTest.js"></script>
 <script src="./js/test.js"></script>
-<script>
-	(function(a,b,c,d,e,f,g,h){
-		a.VITestErrors= [];a.addEventListener('error', function (e) {VITestErrors.push(e);});g=b.createElement(c),h=b.getElementsByTagName(c)[0],g.async=1,g.src=d,g.onload=function(){a[e].init(f)},h.parentNode.insertBefore(g,h)}
-	)(window, document, 'script', '../src/VITest.js', 'VITest', '0');
-</script>
 </body>
 </html>

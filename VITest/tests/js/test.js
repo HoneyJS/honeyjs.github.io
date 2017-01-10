@@ -11,8 +11,9 @@ $(function () {
 		AutoTest.log.info('Please visit <a href="./admin.html">the admin page of VITest</a>, and check the result.');
 		self.end();
 		setTimeout(function () {
-			var img = new Image();
+			var img = document.createElement('img');
 			img.src = './123';
+			document.body.appendChild(img);
 		}, 1000);
 		// setTimeout(func, 1000);
 
