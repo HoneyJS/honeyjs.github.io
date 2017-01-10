@@ -10,14 +10,18 @@ $(function () {
 		AutoTest.log.log('run script: "xyz * abc"');
 		AutoTest.log.info('Please visit <a href="./admin.html">the admin page of VITest</a>, and check the result.');
 		self.end();
-		setTimeout(func, 1000);
+		setTimeout(function () {
+			var img = new Image();
+			img.src = './123';
+		}, 1000);
+		// setTimeout(func, 1000);
 
 		function func() {
 			$.ajax({
 				// url: 'http://www.baidu.com',
-				url: './js/endfile.js',
+				url: './js/endfile2.js',
 				type: 'get',
-				dataType: 'script',
+				dataType: 'text',
 				success: function () {
 
 				},
