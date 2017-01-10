@@ -34,6 +34,7 @@
 			if (!error && !e.message) error = UNKNOWN_ERROR;
 			var errMsg = (error && error.message) || e.message;
 			var errStack = (error && error.stack) || e.message;
+			if (this.errors.length >= 5) return;
 			if (this.errors.indexOf(errStack) >= 0) return; // avoid reporting the same error that has been reported
 			this.errors.push(errStack);
 			reportError(errMsg, errStack, e.isTrusted);

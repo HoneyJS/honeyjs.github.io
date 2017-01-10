@@ -44,6 +44,7 @@
 		div {
 			text-align: left;
 			padding: 5px 0;
+			word-break: break-all;
 		}
 	</style>
 </head>
@@ -92,7 +93,7 @@
 //			$tr.append('<td>' + error.stack + '</td>');
 //			$tr.append('<td>' + error.user_agent + '</td>');
 //			$tr.append('<td>' + error.location + '</td>');
-			$tr.append('<td><div>Stack: ' + error.stack + '</div><div>UA: ' + error.user_agent + '</div><div>Link: ' + error.location + '</div></td>');
+			$tr.append('<td><div>UA: ' + error.user_agent + '</div><div>Link: ' + error.location + '</div><div>Stack: ' + error.stack + '</div></td>');
 //			$tr.append('<td>' +
 //					'<table>' +
 //					'<tr>' +
