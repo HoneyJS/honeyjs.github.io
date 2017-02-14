@@ -1,5 +1,5 @@
 /*!
- *  VITest.js v0.6.0110
+ *  VITest.js v0.7.1.0214
  *
  *  yinghao.liu@vmlim20.com.cn
  *
@@ -124,6 +124,7 @@
 	 * @private
 	 */
 	function reportError(message, stack, isTrusted) {
+		if (window.location.hostname == 'localhost') return; // don't report error in localhost environment
 		var script = document.createElement('script');
 		script.src = reportErrorUrl + '?' + params({
 				baas_JSONP: 'VITest.__callback',
