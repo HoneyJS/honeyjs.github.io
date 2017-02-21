@@ -1,5 +1,5 @@
 /*!
- *  VITest.js v0.7.1.0214
+ *  VITest.js v0.7.2.0221
  *
  *  yinghao.liu@vmlim20.com.cn
  *
@@ -27,7 +27,7 @@
 			}
 			listenError();
 			mockAjax();
-			mockImage();
+			// mockImage(); // do not mock Image anymore
 		},
 		reportError: function (e) {
 			var error = e.error;
