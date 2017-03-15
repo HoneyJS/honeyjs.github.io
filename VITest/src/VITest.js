@@ -1,5 +1,5 @@
 /*!
- *  VITest.js v0.7.2.0221
+ *  VITest.js v0.7.3.0315
  *
  *  yinghao.liu@vmlim20.com.cn
  *
@@ -114,7 +114,7 @@
 		};
 	}
 
-	var reportErrorUrl = '//baas.im20.com.cn/Api/vml_wx_app/stat_error';
+	var reportErrorUrl = '//baastest.im20.com.cn/Api/PublicApi/submitVtest';
 
 	/**
 	 * report error to server
@@ -124,18 +124,18 @@
 	 * @private
 	 */
 	function reportError(message, stack, isTrusted) {
-		if (window.location.hostname == 'localhost') return; // don't report error in localhost environment
+		// if (window.location.hostname == 'localhost') return; // don't report error in localhost environment
 		var script = document.createElement('script');
 		script.src = reportErrorUrl + '?' + params({
-				baas_JSONP: 'VITest.__callback',
-				timestamp: parseInt(new Date().getTime() / 1000),
-				baas_action: 'create',
-				project_id: VITest.projectId,
-				message: message,
+				imCallback: 'VITest.__callback',
+				// timestamp: parseInt(new Date().getTime() / 1000),
+				// baas_action: 'create',
+				cid: VITest.projectId,
+				error: message,
 				stack: stack,
-				is_trusted: isTrusted,
-				location: window.location.href,
-				user_agent: navigator.userAgent
+				// is_trusted: isTrusted,
+				link: window.location.href,
+				ua: navigator.userAgent
 			});
 		document.getElementsByTagName('script')[0].appendChild(script);
 	}
