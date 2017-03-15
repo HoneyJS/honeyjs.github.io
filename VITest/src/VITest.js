@@ -114,7 +114,7 @@
 		};
 	}
 
-	var reportErrorUrl = '//baastest.im20.com.cn/Api/PublicApi/submitVtest';
+	var reportErrorUrl = 'http://baastest.im20.com.cn/Api/PublicApi/submitVtest';
 
 	/**
 	 * report error to server
