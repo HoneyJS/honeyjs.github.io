@@ -4,115 +4,68 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no">
 	<title>Admin Page of VITest</title>
-	<style>
-		body {
-			padding: 10px 30px;
-		}
-
-		table {
-			border-bottom: 1px solid #aaa;
-			border-right: 1px solid #aaa;
-		}
-
-		th, td {
-			padding: 5px;
-			border-left: 1px solid #aaa;
-			border-top: 1px solid #aaa;
-			text-align: center;
-		}
-
-		th:nth-child(1) {
-			width: 10em;
-		}
-
-		th:nth-child(2) {
-			width: 5em;
-		}
-
-		th:nth-child(3) {
-			width: 12em;
-		}
-
-		th:nth-child(6) {
-			width: 5em;
-		}
-
-		.err {
-			color: #f33;
-			font-weight: bold;
-		}
-		div {
-			text-align: left;
-			padding: 5px 0;
-			word-break: break-all;
-		}
-	</style>
+	<link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" href="./css/font-awesome.css">
+	<link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
 
-<table id="table" border="0" cellspacing="0" cellpadding="0">
-	<tr>
-		<th>Time</th>
-		<th>ProjectID</th>
-		<th>Error</th>
-		<th>Detail</th>
-		<!--<th>UA</th>-->
-		<!--<th>Location</th>-->
-	</tr>
-</table>
+<div id="main">
+	<div id="projects" class="col-xs-12 clearfix">
+		<div class="project_ctnr col-xs-12 col-sm-6 col-md-6 col-lg-4">
+			<a class="project" href="#">
+				<div class="name">Project</div>
+				<div class="stat clearfix">
+					<div class="card error">
+						<div class="title">Error</div>
+						<div class="content">0</div>
+					</div>
+					<div class="card first">
+						<div class="title">First</div>
+						<div class="content">2017-03-16<br>12:00:00</div>
+					</div>
+					<div class="card last">
+						<div class="title">Last</div>
+						<div class="content">2017-03-16<br>13:00:00</div>
+					</div>
+				</div>
+			</a>
+		</div>
+	</div>
+
+	<div id="table" class="col-xs-12 clearfix">
+		<div class="error_ctnr">
+			<div class="error">
+				<i class="fa fa-fw fa-warning"></i><span class="content">xxxxx</span>
+			</div>
+			<div class="time">
+				<i class="fa fa-fw fa-calendar"></i><span class="content">2017-03-16 12:00:00</span>
+			</div>
+			<div class="link">
+				<i class="fa fa-fw fa-link"></i><span class="content">xxxxx</span>
+			</div>
+			<div class="ua">
+				<i class="fa fa-fw fa-chrome"></i><span class="content">xxxxx</span>
+			</div>
+			<div class="stack">
+				<i class="fa fa-fw fa-bars"></i><span class="content">xxxxx</span>
+			</div>
+		</div>
+		<!--<table class="col-xs-12" border="0" cellspacing="0" cellpadding="0">-->
+			<!--<thead>-->
+			<!--<tr>-->
+				<!--<th>Time</th>-->
+				<!--<th>Error</th>-->
+				<!--<th>Detail</th>-->
+			<!--</tr>-->
+			<!--</thead>-->
+			<!--<tbody></tbody>-->
+		<!--</table>-->
+	</div>
+</div>
 
 <script src="./js/jquery-3.1.1.min.js"></script>
-<script>
-	$(function () {
-		$.ajax({
-			type: 'get',
-			dataType: 'jsonp',
-			jsonp: 'baas_JSONP',
-			url: '//baas.im20.com.cn/Api/vml_wx_app/stat_error',
-			data: {
-				baas_action: 'sort',
-				baas_sort_field: 'timestamp',
-				baas_sort_type: 'desc',
-				baas_count: 50
-			},
-			success: function (json) {
-				console.log(json)
-				showList(json.data);
-			}
-		});
-
-		function showList(list) {
-			list.forEach(showError);
-		}
-
-		function showError(error) {
-			var $tr = $('<tr>');
-			$tr.append('<td>' + error.f_create_datetime + '</td>');
-			$tr.append('<td>' + error.project_id + '</td>');
-			$tr.append('<td class="err">' + error.message + '</td>');
-//			$tr.append('<td>' + error.stack + '</td>');
-//			$tr.append('<td>' + error.user_agent + '</td>');
-//			$tr.append('<td>' + error.location + '</td>');
-			$tr.append('<td><div>UA: ' + error.user_agent + '</div><div>Link: ' + error.location + '</div><div>Stack: ' + error.stack + '</div></td>');
-//			$tr.append('<td>' +
-//					'<table>' +
-//					'<tr>' +
-//					'<td>Stack: </td>' +
-//					'<td>' + error.stack + '</td>' +
-//					'</tr>' +
-//					'<tr>' +
-//					'<td>UA: </td>' +
-//					'<td>' + error.user_agent + '</td>' +
-//					'</tr>' +
-//					'<tr>' +
-//					'<td>Link: ' + '</td>' +
-//					'<td>' + error.location + '</td>' +
-//					'</tr>' +
-//					'</table>' +
-//					'</td>');
-			$tr.appendTo('#table');
-		}
-	});
-</script>
+<script src="../src/VITestAdmin.js"></script>
+<script src="./js/admin.js"></script>
 </body>
 </html>

@@ -1,0 +1,147 @@
+$color_primary: #337ab7;
+$color_primary_active: #134a97;
+$color_button: #1ab394;
+$color_button_active: #18a689;
+$color_gray: #666;
+$color_black: #111;
+$color_white: #fff;
+$color_red: #ed5565;
+$color_disabled: #bbb;
+
+#projects {
+	display: none;
+	padding-top: 30px;
+	.project_ctnr {
+		margin: 10px 0;
+		.project {
+			display: block;
+			margin: 0 auto;
+			padding: 0;
+			background: $color_white;
+			border-radius: 3px;
+			border: 1px solid $color_button;
+			text-decoration: none;
+			transition: all 0.6s;
+			.name {
+				padding: 6px;
+				font-size: 20px;
+				color: $color_white;
+				background: $color_button;
+				text-align: center;
+				transition: all 0.6s;
+			}
+			&:hover {
+				border-color: $color_button_active;
+				background: lighten($color_button, 50);
+				.name {
+					background: $color_button_active;
+				}
+			}
+			.stat {
+				color: $color_button;
+				padding: 20px 0px;
+				width: 360px;
+				margin: 0 auto;
+				.card {
+					float: left;
+					position: relative;
+					color: $color_white;
+					background: $color_button;
+					border-radius: 3px;
+					width: 110px;
+					height: 110px;
+					text-align: center;
+					margin: 5px;
+					.title {
+						position: absolute;
+						left: 6px;
+						bottom: 6px;
+						font-size: 16px;
+						line-height: 20px;
+						opacity: 0.6;
+					}
+					.content {
+						text-align: center;
+						font-size: 16px;
+						line-height: 20px;
+						padding: 35px 0;
+					}
+				}
+				.card.error {
+					background: $color_red;
+					.content {
+						font-size: 40px;
+						line-height: 110px;
+						padding: 0;
+					}
+				}
+				.card.first {
+					background: $color_primary;
+				}
+			}
+		}
+	}
+}
+
+#table {
+	display: none;
+	padding: 30px 50px;
+
+	.error_ctnr {
+		padding: 10px;
+		border: 1px solid $color_button;
+		//background: $color_button;
+		//color: $color_white;
+		border-radius: 3px;
+		margin: 5px 0;
+		.error {
+			color: $color_white;
+			background: $color_red;
+			font-size: 20px;
+			line-height: 36px;
+			border-radius: 3px;
+			padding-left: 5px;
+			margin-bottom: 5px;
+		}
+		.time {
+			float: left;
+			margin-right: 20px;
+		}
+		.fa {
+			margin-right: 5px;
+		}
+	}
+	//table {
+	//	border-bottom: 1px solid #aaa;
+	//	border-right: 1px solid #aaa;
+	//}
+	//th, td {
+	//	padding: 5px 10px;
+	//	border-left: 1px solid #aaa;
+	//	border-top: 1px solid #aaa;
+	//	text-align: center;
+	//	line-height: 1.2;
+	//}
+	//
+	//th:nth-child(1) {
+	//	width: 10em;
+	//}
+	//
+	//th:nth-child(2) {
+	//	width: 15em;
+	//}
+	//
+	//th:nth-child(3) {
+	//	//width: 12em;
+	//}
+	//
+	//.err {
+	//	color: $color_red;
+	//	font-weight: bold;
+	//}
+	//td div {
+	//	text-align: left;
+	//	padding: 3px 0;
+	//	word-break: break-all;
+	//}
+}
