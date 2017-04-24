@@ -109,6 +109,13 @@ $color_disabled: #bbb;
 		}
 		.fa {
 			margin-right: 5px;
+			line-height: inherit;
+		}
+		.stack, .ua {
+			display: flex;
+			.content {
+				flex: 1;
+			}
 		}
 	}
 	//table {

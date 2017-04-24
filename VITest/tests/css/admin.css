@@ -80,6 +80,11 @@
       float: left;
       margin-right: 20px; }
     #table .error_ctnr .fa {
-      margin-right: 5px; }
+      margin-right: 5px;
+      line-height: inherit; }
+    #table .error_ctnr .stack, #table .error_ctnr .ua {
+      display: flex; }
+      #table .error_ctnr .stack .content, #table .error_ctnr .ua .content {
+        flex: 1; }
 
 /*# sourceMappingURL=admin.css.map */
