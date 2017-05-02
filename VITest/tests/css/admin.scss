@@ -103,6 +103,9 @@ $color_disabled: #bbb;
 			padding-left: 5px;
 			margin-bottom: 5px;
 		}
+		.content {
+			word-break: break-all;
+		}
 		.time {
 			float: left;
 			margin-right: 20px;
